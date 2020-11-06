@@ -35,12 +35,11 @@
                     @endif
                 </div>
             @endif
-            <div> 
-              <a  href="{{url'/home')}}">
-                  <img src=" {{ asset('images/logo.jpg')}}" >
-             </a> 
+            <div>
+            address: southern cart <br>
+            tel: 12345678
             </div>
-    </div>
-            
+             
+        </div>    
     </body>
 </html>
