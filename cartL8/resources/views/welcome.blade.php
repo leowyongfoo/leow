@@ -36,11 +36,10 @@
                 </div>
             @endif
             <div> 
-              <a  href="{{url'/home')}}">
-                  <img src=" {{ asset('images/logo.jpg')}}" >
+              <a href="{{url('/home')}}">
+                  <img src=" {{ asset('images/logo.jpg')}}">
              </a> 
             </div>
-    </div>
-            
+            </div>
     </body>
 </html>
