@@ -37,8 +37,7 @@
                         <td>{{$product->price}}</td>
 		                <td>
 		                    <a href="#" class="btn btn-warning"><i class="fas fa-edit">Edit</i></a> | 
-		                    <a href="#" 
- class="btn btn-danger" onclick="return confirm('Sure Want Delete?')">Delete</a>
+		                    <a href="#"  class="btn btn-danger" onclick="return confirm('Sure Want Delete?')">Delete</a>
 		                </td>
 		            </tr> 
                 @endforeach
