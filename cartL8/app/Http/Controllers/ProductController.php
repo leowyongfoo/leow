@@ -42,4 +42,38 @@ class productController extends Controller
         $products=Product::all();
         return view('showProduct')->with('products',$products);
     }
+
+    public function edit($id){
+       
+        $products =Product::all()->where('id',$id);
+        //select * from products where id='$id'
+        
+        return view('editproduct')->with('products',$products)
+                                ->with('categories',Category::all());
+    }
+
+    public function delete($id){
+        $products=Product::find($id);
+        $products->delete();
+        return redirect()->route('showProduct');
+    }
+
+    public function update(){
+        $r=request();//retrive submited form data
+        $products =Product::find($r->ID);  //get the record based on product ID      
+        if($r->file('product-image')!=''){
+            $image=$r->file('product-image');        
+            $image->move('images',$image->getClientOriginalName());                   
+            $imageName=$image->getClientOriginalName(); 
+            $products->image=$imageName;
+            }         
+        $products->name=$r->name;
+        $products->description=$r->description;
+        $products->price=$r->price;
+        $products->quantity=$r->quantity;
+        $products->categoryID=$r->category;
+        $products->save(); //run the SQL update statment
+        return redirect()->route('showProduct');
+    }
+
 }
