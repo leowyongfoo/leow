@@ -50,6 +50,8 @@ Route::post('/updateproduct', [App\Http\Controllers\ProductController::class, 'u
 
 Route::post('/searchproduct', [App\Http\Controllers\ProductController::class, 'search'])->name('search.product');
 
+Route::get('/clientProductView', [App\Http\Controllers\ProductController::class, 'clientProductView'])->name('clientProductView');
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
