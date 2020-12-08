@@ -12,7 +12,7 @@
                                     <a href="#"><img src="{{ asset('images/') }}/{{$product->image}}" alt="" class="img-fluid" ></a>
                                     
                                     <div class="card-heading">RM{{$product->price}} 
-                                        <button style="float:right;" class="btn btn-danger btn-xs"><a href="#">add to cart</a></button>
+                                    <button style="float:right;" class="btn btn-danger btn-xs">AddToCart</button>
                                     </div>
                                 </div>
                             </div>
@@ -20,8 +20,8 @@
                 @endforeach       
                     </div>
                       
-                <div class="card card-footer">&copy; 2020</div>
-                <div class="col-sm-0">{{ $products->links()}}</div>  
+               
+                <div>{{ $products->links()}}</div>  
                 
             </div>
          </div>
