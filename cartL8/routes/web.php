@@ -52,6 +52,13 @@ Route::post('/searchproduct', [App\Http\Controllers\ProductController::class, 's
 
 Route::get('/clientProductView', [App\Http\Controllers\ProductController::class, 'clientProductView'])->name('clientProductView');
 
+Route::get('/product_detail/{id}', [App\Http\Controllers\ProductController::class, 'showProductDetail'])->name('product.detail');
+
+Route::post('/addToCart', [App\Http\Controllers\CartController::class, 'add'])->name('add.to.cart');
+
+Route::get('/myCart', [App\Http\Controllers\CartController::class, 'show'])->name('my.cart');
+
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

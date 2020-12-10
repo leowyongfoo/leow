@@ -97,4 +97,13 @@ class productController extends Controller
         return view('clientProductView')->with('products',$products);
     }
 
+    public function showProductDetail($id){
+       
+        $products =Product::all()->where('id',$id);
+        //select * from products where id='$id'
+        
+        return view('productdetail')->with('products',$products)
+                                ->with('categories',Category::all());
+    }
+
 }
