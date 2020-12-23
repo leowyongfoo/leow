@@ -5,11 +5,33 @@
             {{ Session::get('success')}}
         </div>       
 @endif 
+<script>
+function TotalAmount() {
+	
+	var prices = document.getElementsByName('price[]');
+	
+	var total=0;
+	
+	var cboxes = document.getElementsByName('item[]');    
+	var len = cboxes.length;	    
+	for (var i=0; i<len; i++) {        
+		if(cboxes[i].checked){	//calculate if checked		
+			subtotal=parseFloat(prices[i].value)+parseFloat(total);	
+			total=subtotal;	
+		}				
+	}
+	
+	
+		
+    
+	document.getElementById('amount').value=total.toFixed(2);
+}
+</script>
     
 
 <div class="container">
 	    <div class="row">
-        <form   method="post" action="{{ route('create.order') }}" >
+        <form method="post" action="{{ route('create.order') }}" >
             @csrf
 		    <table class="table table-hover table-striped">
 		        <thead>
@@ -25,17 +47,23 @@
 		        <tbody>	
                 @foreach($carts as $cart)
 		            <tr>
-		                <td><input type="checkbox" name="item[]" /></td>
+		                <td><input type="checkbox" name="item[]" value="{{$cart->cid}}" onchange="TotalAmount()" /></td>
                         <td><img src="{{ asset('images/') }}/{{$cart->image}}" alt="" width="50"></td>
 		                <td style="max-width:300px">
 		                    <h6>{{$cart->name}}</h6>	                    
 		                </td>
                         <td>{{$cart->cartQty}}</td>
-                        <td>{{$cart->price*$cart->cartQty}}</td>
+						
+                        @php
+							$subtotal = $cart->cartQty*$cart->price;
+						@endphp
+
+                        <td>{{$subtotal}}</td>
+						<input type="hidden" value="{{$subtotal}}" name="price[]" id="price[]"/>
+
+		               
 		                <td>
-		                    | 
-		                    <a href="#" 
- class="btn btn-danger" onclick="return confirm('Sure Want Delete?')">Delete</a>
+		                   <a href="{{ route('deleteCart', ['id' => $cart->cid]) }}" class="btn btn-danger" onclick="return confirm('Confirm Delete?')">Delete</a>
 		                </td>
 		            </tr> 
                 @endforeach
@@ -45,7 +73,7 @@
                     <td>&nbsp;</td>
 		            <td>&nbsp;</td>                   
 		            <td>Total</td>
-		            <td><input type="text" name="amount" id="amount" value="1000"></td>
+		            <td><input type="text" name="amount" id="amount" value=""></td>
                     <td><input type="submit" name="checkout" value="Checkout"></td>
 		        </tr>
 				</form>

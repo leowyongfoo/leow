@@ -11,7 +11,6 @@
 		            <th>ID</th>
                     <th>Image</th>
 		            <th>Name</th>
-                   
 		            <th>Quantity</th>
 		            <th>Amount</th>
                     <th>Status</th>
@@ -32,6 +31,7 @@
                         <td>{{$myorder->qty}}</td>
 						@php
 							$subtotal = $myorder->qty*$myorder->price;
+
 							$total=$total+$subtotal;
 						@endphp
 
