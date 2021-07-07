@@ -45,7 +45,9 @@
 				
 		        </tbody>
 		    </table>
-		
+		<div class="text-center">
+		<a href="{{route('pdfReport')}}" class="btn btn-info"><i class="fas fa-edit">download PDF</i></a> 
+        </div>
 		<div class="text-center">
 			{{ $products->links() }}
         </div>
